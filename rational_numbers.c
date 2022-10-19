@@ -98,14 +98,7 @@ int compare_rationals(rational* num1, rational* num2)
 
 int NWD(int a, int b)
 {
-	int temp;
-	while (b != 0)
-	{
-		temp = b;
-		b = a % b;
-		a = temp;
-	}
-	return a;
+	return b==0 ? a : NWD(b,a%b);
 }
 
 rational add_rationals(rational* num1, rational* num2)

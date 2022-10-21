@@ -52,7 +52,7 @@ void print_random_set(CMPLX_SET cmplxset)
 void create_random_set(CMPLX_SET* pcs, int num)
 {
 	pcs->n = num;
-	pcs->set = calloc(pcs->n, sizeof(CMPLX));
+	pcs->set = (CMPLX*)calloc(pcs->n, sizeof(CMPLX));
 	srand((unsigned int)time(NULL));
 	for (int i = 0; i < num; i++)
 	{
@@ -68,6 +68,8 @@ void delete_random_set(CMPLX_SET* pcs)
 
 void change_set_size(CMPLX_SET* pcs, int num)
 {
-	pcs->set = realloc(pcs->set, num * sizeof(CMPLX));
+	CMPLX *tmp = (CMPLX*)realloc(pcs->set, num * sizeof(CMPLX));
+	if (tmp != NULL)
+		tmp = pcs->set;
 	pcs->n += 1;
 }

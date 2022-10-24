@@ -16,7 +16,7 @@ int number_of_lines(const char* file_name)
 	FILE* file=fopen(file_name,"w");
 	if(!file)
 	{
-		fprintf(stderr, "Error!\n");
+		perror("Error!\n");
 		return EXIT_FAILURE;
 	}
 	int previous = getchar(), c, number = 0;
